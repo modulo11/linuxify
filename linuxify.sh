@@ -80,12 +80,12 @@ linuxify_install() {
 
     # gdb requires special privileges to access Mach ports.
     # One can either codesign the binary as per https://sourceware.org/gdb/wiki/BuildingOnDarwin
-    # Or, on 10.12 Sierra or later with SIP, declare `set startup-with-shell off` in `~/.gdbinit`:
-    grep -qF 'set startup-with-shell off' ~/.gdbinit || echo 'set startup-with-shell off' | tee -a ~/.gdbinit > /dev/null
+    # Or, on 10.12 Sierra or later with SIP, declare `set startup-with-shell off` in `$HOME/.gdbinit`:
+    grep -qF 'set startup-with-shell off' $HOME/.gdbinit || echo 'set startup-with-shell off' | tee -a $HOME/.gdbinit > /dev/null
 
     # Make changes to PATH/MANPATH/INFOPATH/LDFLAGS/CPPFLAGS
-    cp .linuxify ~/.linuxify
-    echo "Add '[[ "$OSTYPE" =~ ^darwin ]] && [ -f ~/.linuxify ] && source ~/.linuxify' to your ~/.bashrc, ~/.zshrc or your shell's equivalent config file"
+    cp .linuxify $HOME/.linuxify
+    echo "Add '[[ "$OSTYPE" =$HOME ^darwin ]] && [ -f $HOME/.linuxify ] && source $HOME/.linuxify' to your $HOME/.bashrc, $HOME/.zshrc or your shell's equivalent config file"
 }
 
 linuxify_uninstall() {
@@ -93,7 +93,7 @@ linuxify_uninstall() {
     linuxify_check_brew;
 
     # Remove gdb fix
-    sed -i.bak '/set startup-with-shell off/d' ~/.gdbinit && rm ~/.gdbinit.bak
+    sed -i.bak '/set startup-with-shell off/d' $HOME/.gdbinit && rm $HOME/.gdbinit.bak
 
     # Change default shell back to macOS /bin/bash
     sudo sed -i.bak '/\/usr\/local\/bin\/bash/d' /etc/shells && sudo rm /etc/shells.bak
@@ -105,8 +105,8 @@ linuxify_uninstall() {
     done
 
     # Remove changes to PATH/MANPATH/INFOPATH/LDFLAGS/CPPFLAGS
-    rm -f ~/.linuxify
-    echo "Remove '[[ "$OSTYPE" =~ ^darwin ]] && [ -f ~/.linuxify ] && source ~/.linuxify' from your ~/.bashrc, ~/.zshrc or your shell's equivalent config file"
+    rm -f $HOME/.linuxify
+    echo "Remove '[[ "$OSTYPE" =$HOME ^darwin ]] && [ -f $HOME/.linuxify ] && source $HOME/.linuxify' from your $HOME/.bashrc, $HOME/.zshrc or your shell's equivalent config file"
 }
 
 linuxify_info() {
