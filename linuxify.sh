@@ -21,7 +21,7 @@ linuxify_formulas=(
     # GNU programs non-existing in macOS
     "watch"
     "wget"
-    "wdiff --with-gettext"
+    "wdiff"
     "gdb"
     "autoconf"
 
@@ -29,14 +29,14 @@ linuxify_formulas=(
     "coreutils"
     "binutils"
     "diffutils"
-    "ed --with-default-names"
-    "findutils --with-default-names"
+    "ed"
+    "findutils"
     "gawk"
-    "gnu-indent --with-default-names"
-    "gnu-sed --with-default-names"
-    "gnu-tar --with-default-names"
-    "gnu-which --with-default-names"
-    "grep --with-default-names"
+    "gnu-indent"
+    "gnu-sed"
+    "gnu-tar"
+    "gnu-which"
+    "grep"
     "gzip"
     "screen"
 
@@ -46,7 +46,7 @@ linuxify_formulas=(
     "gpatch"
     "less"
     "m4"
-    "make --with-default-names"
+    "make"
     "nano"
     "bison"
 
@@ -62,7 +62,7 @@ linuxify_formulas=(
     "python"
     "rsync"
     "unzip"
-    "vim --override-system-vi"
+    "vim"
 )
 
 linuxify_install() {
