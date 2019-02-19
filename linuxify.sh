@@ -85,7 +85,8 @@ linuxify_install() {
 
     # Make changes to PATH/MANPATH/INFOPATH/LDFLAGS/CPPFLAGS
     cp .linuxify $HOME/.linuxify
-    echo "Add '[[ "$OSTYPE" =$HOME ^darwin ]] && [ -f $HOME/.linuxify ] && source $HOME/.linuxify' to your $HOME/.bashrc, $HOME/.zshrc or your shell's equivalent config file"
+    echo "Add to your $HOME/.bashrc, $HOME/.zshrc or your shell's equivalent config file:"
+    echo '[[ $OSTYPE =$HOME ^darwin ]] && [ -f $HOME/.linuxify ] && source $HOME/.linuxify'
 }
 
 linuxify_uninstall() {
